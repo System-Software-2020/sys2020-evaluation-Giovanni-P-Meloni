@@ -9,10 +9,13 @@ LIB = lib
 SRC = src
 BIN = bin
 
+prefix=.
+
 all: libex2.so ex1 $(BIN)
 
 ex1: $(BIN)/ex1.o libex2.so
-	$(LD) -o $@ $^ $(LDFLAGS) -L.
+	$(LD) -Wl,-rpath=. -Wl,-rpath=$(prefix) -o $@ $^ $(LDFLAGS) -L.
+
 
 $(BIN)/ex1.o: $(SRC)/ex1.c 
 	$(CC) -c -o $@ $< $(CFLAGS) -I$(INCLUDE)
@@ -42,9 +45,6 @@ clean:
 run:
 	./ex1
 
-ld_path:
-	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(prefix)/usr/lib/
-	export LD_LIBRARY_PATH
 
 PROJNAME = sys2020
 DISTFILES =  AUTHORS COPYING INSTRUCTIONS LICENSE README.md INSTRUCTIONS
