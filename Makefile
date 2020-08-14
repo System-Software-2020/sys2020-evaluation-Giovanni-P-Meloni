@@ -46,5 +46,11 @@ ld_path:
 	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(prefix)/usr/lib/
 	export LD_LIBRARY_PATH
 
-zip:
-	rm -f monaco && zip -r monaco *
+PROJNAME = sys2020
+DISTFILES =  AUTHORS COPYING INSTRUCTIONS LICENSE README.md INSTRUCTIONS
+DISTFILES += Makefile src/ex1.c lib/ex2.c lib/ex2.h
+
+dist:
+	rm -f $(PROJNAME).tar.gz
+	tar zcvf $(PROJNAME).tar.gz $(DISTFILES)
+
