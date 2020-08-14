@@ -9,8 +9,6 @@ LIB = lib
 SRC = src
 BIN = bin
 
-prefix=.
-
 all: libex2.so ex1 $(BIN)
 
 ex1: $(BIN)/ex1.o libex2.so
@@ -44,7 +42,6 @@ clean:
 
 run:
 	./ex1
-
 
 PROJNAME = sys2020
 DISTFILES =  AUTHORS COPYING INSTRUCTIONS LICENSE README.md INSTRUCTIONS
